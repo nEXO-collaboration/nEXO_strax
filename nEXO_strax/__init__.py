@@ -7,6 +7,7 @@ from .mini_analysis import *
 
 from . import plugins
 from .plugins import *
+from .extra_plugin_types import *
 
 from . import analyses
 

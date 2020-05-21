@@ -13,13 +13,12 @@ with tempfile.TemporaryDirectory() as temp_dir:
     con = st.contexts.MC_test()
     MCfactory = st.nEXO_MC_reader.MCreader_factory()
 
-    con.register(MCfactory.make_MCreader('U','/home/brodsky3/nexo/mc_build/test2.root',1,100))
-    con.register(MCfactory.make_MCreader('Th', '/home/brodsky3/nexo/mc_build/test2.root', 100, 1))
+    con.register(MCfactory.make_MCreader('U','/home/brodsky3/nexo/mc_build/test_tl208_strax.root',2e-9))
+    con.register(MCfactory.make_MCreader('Th', '/home/brodsky3/nexo/mc_build/test_tl208_strax.root', 1e-8,))
     [con.register(merger) for merger in MCfactory.make_MCmergers()]
 
     con.register(st.nEXO_MC_reader.MCReader_test_consumer)
     con.register(st.chargesim.Thermalelectrons)
-    con.register(st.chargesim.Thermalelectrons_drift)
     con.register(st.chargesim.Test_consumer)
     # con.context_config['max_messages']=10
 
@@ -27,7 +26,7 @@ with tempfile.TemporaryDirectory() as temp_dir:
     print(con.data_info('nest_hits'))
 
     # con.get_array('1','photons',max_workers=1)
-    con.get_array('1','test_consumer')
+    con.get_array('1','test_consumer2')
     # con.get_array('1','thermalelectrons_drift')
 
 
